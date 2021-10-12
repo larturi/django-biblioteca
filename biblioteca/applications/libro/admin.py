@@ -6,9 +6,13 @@ class LibroAdmin(admin.ModelAdmin):
         'id',
         'titulo',
         'categoria',
+        'autores_list',
         'publicado',
         'visitas',
     )
+
+    def autores_list(self, obj):
+        return "\n".join([autor.nombre + ' ' + autor.apellido for autor in obj.autores.all()])
 
     search_fields = ('titulo', 'autores')
     list_filter = ('categoria', 'autores')
