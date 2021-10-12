@@ -1,0 +1,21 @@
+<h1>Lista de Libros</h1>
+
+<p>
+    <form method="GET">
+        {% csrf_token %}
+        <select name="categoria" id="categoria">
+            <option value="0"></option>
+            <option value="1">Ciencia Ficcion</option>
+            <option value="2">Novela</option>
+            <option value="3">Ciencia</option>
+            <option value="4">Informatica</option>
+        </select>
+        <button type="submit">Consultar</button>
+    </form>
+</p>
+
+<ul>
+    {% for libro in lista_libros %}
+        <li>{{ libro.titulo }} - {{ libro.publicado }}</li>
+    {% endfor %}
+</ul>

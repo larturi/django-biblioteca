@@ -1,7 +1,6 @@
 from django.db import models
-
 from applications.autor.models import Autor
-
+from .managers import LibroManager
 class Categoria(models.Model):
     nombre = models.CharField('Categoria', max_length=50)
 
@@ -15,6 +14,8 @@ class Libro(models.Model):
     publicado = models.DateField('Fecha de publicacion')
     portada = models.ImageField(upload_to='portada')
     visitas = models.PositiveIntegerField()
+
+    objects = LibroManager()
 
     def __str__(self):
         return self.titulo
