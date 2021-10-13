@@ -1,0 +1,23 @@
+<h1>Detalle del Libro</h1>
+
+<p>
+    <label>Titulo: </label>   
+   {{ libro.titulo }}
+</p>
+<p>
+   <label>Fecha Publicacion: </label>   
+   {{ libro.publicado }}
+</p>
+<p>
+   <label>Categoria: </label>   
+   {{ libro.categoria }}
+</p>
+<p>
+   <label>Autores: </label>   
+   {% for autor in libro.autores.all %}
+        <p>- {{ autor }}</p>
+   {% endfor %}
+</p>
+
+<hr>
+
