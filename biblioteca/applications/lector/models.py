@@ -1,5 +1,5 @@
 from django.db import models
-
+from .managers import *
 from applications.libro.models import Libro
 
 class Lector(models.Model):
@@ -13,15 +13,12 @@ class Lector(models.Model):
     apellido = models.CharField('Apellido', max_length=50)
     nacionalidad = models.CharField('Nacionalidad', max_length=50, choices=NACIONALIDAD_CHOICES)
     fecha_nacimiento = models.DateField('Nacimiento')
-
     class Meta:
         verbose_name = "Lector"
         verbose_name_plural = "Lectores"
 
     def __str__(self):
         return self.nombre + ' ' + self.apellido
-
-
 class Prestamo(models.Model):
     lector = models.ForeignKey(Lector, on_delete=models.CASCADE)
     libro = models.ForeignKey(
@@ -32,6 +29,8 @@ class Prestamo(models.Model):
     fecha_prestamo = models.DateField()
     fecha_devolucion = models.DateField(blank=True, null=True)
     devuelto = models.BooleanField()
+
+    objects = PrestamoManager()
 
     class Meta:
         verbose_name = "Prestamo"
