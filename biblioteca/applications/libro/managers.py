@@ -1,6 +1,7 @@
 import datetime
 from django.db import models
 from django.db.models import Count
+from django.contrib.postgres.search import TrigramSimilarity
 
 class LibroManager(models.Manager):
     
@@ -11,6 +12,19 @@ class LibroManager(models.Manager):
         )
 
         return result
+
+    def listar_trg(self, kword):
+
+        if kword:
+            # result = self.filter(
+            #     titulo__trigram_similar=kword,      
+            # )
+            result = self.annotate(
+                similarity=TrigramSimilarity('titulo', kword),
+            ).filter(similarity__gt=0.3).order_by('-similarity')
+            return result
+        else:
+            return self.all()
 
     def listar_by_fechas(self, kword, fecha1, fecha2):
 
