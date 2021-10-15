@@ -1,24 +1,14 @@
 from django.db import models
+
 from .managers import *
 from applications.libro.models import Libro
+from applications.autor.models import Persona
 
-class Lector(models.Model):
-
-    NACIONALIDAD_CHOICES = (
-        ('1', 'Argentina'),
-        ('2', 'Extranjero'),
-    )
-
-    nombre = models.CharField('Nombre', max_length=50)
-    apellido = models.CharField('Apellido', max_length=50)
-    nacionalidad = models.CharField('Nacionalidad', max_length=50, choices=NACIONALIDAD_CHOICES)
-    fecha_nacimiento = models.DateField('Nacimiento')
-    class Meta:
+class Lector(Persona):
+       class Meta:
         verbose_name = "Lector"
         verbose_name_plural = "Lectores"
 
-    def __str__(self):
-        return self.nombre + ' ' + self.apellido
 class Prestamo(models.Model):
     lector = models.ForeignKey(Lector, on_delete=models.CASCADE)
     libro = models.ForeignKey(
