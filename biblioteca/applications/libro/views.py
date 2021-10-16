@@ -1,6 +1,9 @@
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, TemplateView
 
 from .models import Libro
+
+class HomeView(TemplateView):
+    template_name = "home.html"
 
 class ListLibros(ListView):
     context_object_name = 'lista_libros'
