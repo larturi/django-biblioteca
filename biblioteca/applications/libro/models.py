@@ -1,4 +1,8 @@
 from django.db import models
+from django.db.models.signals import post_save
+
+from PIL import Image
+
 from applications.autor.models import Autor
 from .managers import LibroManager, CategoriaManager
 class Categoria(models.Model):
@@ -31,3 +35,11 @@ class Libro(models.Model):
 
     def __str__(self):
         return self.titulo
+
+def optimize_image(sender, instance, **kwargs):
+    if instance.portada:
+        portada = Image.open(instance.portada.path)
+        portada.save(instance.portada.path, quality=90, optimize=True)
+
+
+post_save.connect(optimize_image, sender=Libro)
