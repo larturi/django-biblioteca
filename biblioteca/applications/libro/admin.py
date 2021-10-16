@@ -9,6 +9,7 @@ class LibroAdmin(admin.ModelAdmin):
         'autores_list',
         'publicado',
         'visitas',
+        'stock',
     )
 
     def autores_list(self, obj):

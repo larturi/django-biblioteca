@@ -22,6 +22,11 @@ class Prestamo(models.Model):
 
     objects = PrestamoManager()
 
+    def save(self, *args, **kwargs):
+        self.libro.stock = self.libro.stock -1
+        self.libro.save()
+        super(Prestamo, self).save(*args, **kwargs)
+
     class Meta:
         verbose_name = "Prestamo"
         verbose_name_plural = "Prestamos"
