@@ -9,6 +9,7 @@ unipath = "*"
 psycopg2-binary = "*"
 pillow = "*"
 whitenoise = "*"
+gunicorn = "*"
 
 [dev-packages]
 
