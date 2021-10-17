@@ -27,6 +27,12 @@ class MultiPrestamoForm(forms.ModelForm):
             'lector',
         ]
 
+        widgets = {
+            'lector': forms.Select(
+                attrs={'class':'form-control mb-2 w-25'}
+            ),
+        }
+
     def __init__(self, *args, **kwargs):
         super(MultiPrestamoForm, self).__init__(*args, **kwargs)
 

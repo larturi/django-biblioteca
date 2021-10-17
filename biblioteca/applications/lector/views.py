@@ -1,11 +1,18 @@
 from datetime import date
 
-from django.views.generic.edit import FormView
 from django.http import HttpResponseRedirect
+from django.views.generic.edit import FormView
+from django.views.generic.list import ListView
 
 from .models import Prestamo
 from .forms import PrestamoForm, MultiPrestamoForm
 
+class ListPrestamos(ListView):
+    context_object_name = 'lista_prestamos'
+    template_name = 'lector/prestamos.html'
+
+    def get_queryset(self):
+        return Prestamo.objects.all()
 class RegistrarPrestamo(FormView):
     template_name = 'lector/add_prestamo.html'
     form_class = PrestamoForm
@@ -51,7 +58,6 @@ class AddPrestamo(FormView):
             return super(AddPrestamo, self).form_valid(form)
         else:
             return HttpResponseRedirect('/')
-
 
 class AddMultiPrestamo(FormView):
 

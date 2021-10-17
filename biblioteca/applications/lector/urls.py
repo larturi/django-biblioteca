@@ -6,6 +6,11 @@ app_name = "lector_app"
 
 urlpatterns = [
     path(
+        'prestamos', 
+        views.ListPrestamos.as_view(), 
+        name="prestamos"
+    ),
+    path(
         'prestamo/add/', 
         views.AddPrestamo.as_view(), 
         name="prestamo-add"

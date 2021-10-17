@@ -13,21 +13,14 @@
             <div class="row">
                 <div class="col mt-3">
 
-                    <h1 class="mb-3">Lista de Autores</h1>
+                    <h1 class="mb-3">Prestamos</h1>
 
                     <form method="GET" class="form-inline">
                         {% csrf_token %}
-
                         <div class="row">
-
                             <div class="col-md-auto col-12 mb-2">
-                                <input type="text" id="kword" name="kword" placeholder="Ingrese nombre" class="form-control">
+                                <a href="{% url 'lector_app:multiprestamo-add' %}" class="btn btn-primary btn-resoponsive">Registrar Prestamo</a>
                             </div>
-
-                            <div class="col-md-auto col-12 mb-2">
-                                <button type="submit" class="btn btn-primary btn-resoponsive">Consultar</button> 
-                            </div>
-
                         </div>
                     </form>
 
@@ -42,15 +35,19 @@
                     <table class="table table-responsive">
                         <thead>
                             <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Nombre</th>
+                                <th scope="col">Lector</th>
+                                <th scope="col">Libro</th>
+                                <th scope="col">Prestamo</th>
+                                <th scope="col">Devolucion</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {% for autor in lista_autores %}
+                            {% for prestamo in lista_prestamos %}
                                 <tr>
-                                    <th scope="row">{{ autor.id }}</th>
-                                    <td>{{ autor.nombre }} {{ autor.apellido }}</td>
+                                    <td>{{ prestamo.lector }}</td>
+                                    <td>{{ prestamo.libro }}</td>
+                                    <td>{{ prestamo.fecha_prestamo }}</td>
+                                    <td>{{ prestamo.fecha_devolucion }}</td>
                                 </tr>
                             {% endfor %}
                         </tbody>
@@ -58,7 +55,7 @@
 
                 </div>
             </div>
-
+            
         </div>
 
     </main>
