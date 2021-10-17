@@ -1,0 +1,42 @@
+.banner {
+  background-image: linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.7)), url("../img/libros.png");
+  background-repeat: no-repeat;
+  background-size:100% 100%;
+}
+
+.avatar {
+  vertical-align: middle;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: solid 1px gray;
+}
+
+.column-checkbox {
+  padding-top: 20px;
+  list-style-type: none;
+}
+
+.column-checkbox .checkbox {
+  display: block;
+  float: left;
+  width: 25%;
+}
+
+.action-btn {
+  min-width: 100px;
+}
+
+@media (max-width: 600px) {
+  .btn-resoponsive {
+    width: 100%;
+  }
+
+  .form-empleados {
+    margin-top: 20px;
+  }
+
+  .float-end {
+    float: left!important;
+  }
+}
