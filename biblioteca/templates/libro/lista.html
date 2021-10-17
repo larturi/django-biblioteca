@@ -43,15 +43,42 @@
 
             <div class="row mt-3">
                 <div class="col">
-                    <ul>
-                        {% for libro in lista_libros %}
-                            <li>{{ libro.titulo }} - {{ libro.publicado }}</li>
-                        {% endfor %}
-                    </ul>
+
+                    <table class="table table-responsive">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Titulo</th>
+                                <th scope="col">Autor</th>
+                                <th scope="col">Categoria</th>
+                                <th scope="col">Stock</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for libro in lista_libros %}
+                                <tr>
+                                    <th scope="row">{{ libro.id }}</th>
+                                    <td>{{ libro.titulo }}</td>
+                                    <td>
+                                        {% for autor in libro.autores.all %}
+                                            {{ autor }}
+                                        {% endfor %}
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-dark">{{ libro.categoria }}</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge rounded-pill bg-success">{{ libro.stock }}</span>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+
                 </div>
             </div>
+            
         </div>
-
 
     </main>
 

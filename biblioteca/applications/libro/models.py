@@ -36,6 +36,9 @@ class Libro(models.Model):
     def __str__(self):
         return self.titulo
 
+    def autores_list(self, obj):
+        return "\n".join([autor.nombre + ' ' + autor.apellido for autor in obj.autores.all()])
+
 def optimize_image(sender, instance, **kwargs):
     if instance.portada:
         portada = Image.open(instance.portada.path)
