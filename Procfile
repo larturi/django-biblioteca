@@ -1,1 +1,1 @@
-web: gunicorn bibliioteca.wsgi --log-file -
+web: gunicorn biblioteca.wsgi --log-file -
