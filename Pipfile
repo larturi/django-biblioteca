@@ -10,6 +10,8 @@ psycopg2-binary = "*"
 pillow = "*"
 whitenoise = "*"
 gunicorn = "*"
+dj-database-url = "*"
+django-environ = "*"
 
 [dev-packages]
 
